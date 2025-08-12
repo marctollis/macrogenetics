@@ -16,3 +16,5 @@ Then when all the sequences are downloaded in the cds_results/ directory, run:
 
 To check if this worked, cd into macse_aligned directory and run: find . -type d -empty
 This will list out any empty directories that may have been missed by the array, and you can run macse individually on those.
+
+We chose MACSE as an aligner since it creates codon-based alignments, which are more robust for many downstream population genetics analyses. Something like MAFFT done serially could theoretically be much quicker, but we still think a MACSE SLURM array is worth it. For a recent analysis of a few thousand species, 99.999% of the MACSE alignments finished within a few minutes, and the largest and most complex ones finshed within a few short hours.

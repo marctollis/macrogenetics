@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Make fresh input list
-find big_cds_results/ -name '*_CDS.fasta' > macse_input_list.txt
+find cds_results/ -name '*_CDS.fasta' > macse_input_list.txt
 
 # Count lines
 N=$(wc -l < macse_input_list.txt)

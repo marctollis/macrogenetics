@@ -8,6 +8,8 @@ fetch_mtDNA_cds_species.sh - For each species in the list (a sample species_list
 
 It's best to run the fetch_mtDNA_cds_species.sh script serially, as an array gunks up the NCBI server and you end up missing a lot of sequences. So the best thing to do is sign into your HPC or remote computer, cd to the fetch working directory, open a screen session, and do 'bash fetch_mtDNA_cds_species.sh', and ctl+A ct1+D to detatch from the screen session.
 
+You can use the [count_sequences_by_gene.sh](https://github.com/marctollis/macrogenetics/blob/main/count_sequences_by_gene.sh) script which will summarize the genes and number of sequences downloaded for each species.
+
 Then when all the sequences are downloaded in the cds_results/ directory, run:
 
         bash submit_macse_array.sh
@@ -18,3 +20,5 @@ To check if this worked, cd into macse_aligned directory and run: find . -type d
 This will list out any empty directories that may have been missed by the array, and you can run macse individually on those.
 
 We chose MACSE as an aligner since it creates codon-based alignments, which are more robust for many downstream population genetics analyses. Something like MAFFT done serially could theoretically be much quicker, but we still think a MACSE SLURM array is worth it. For a recent analysis of a few thousand species, 99.999% of the MACSE alignments finished within a few minutes, and the largest and most complex ones finshed within a few short hours.
+
+After MACSE finishes aligning, you can use the [mtDNA_sumstats.R](https://github.com/marctollis/macrogenetics/blob/main/mtDNA_sumstats.R) script to estimate population summary statistics and output a .csv file for downstream analyses.

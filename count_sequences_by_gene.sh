@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # === Configuration ===
-results_dir="nuc_cds_results"
+results_dir="cds_results"
 output_file="cds_gene_counts.tsv"
 
 echo -e "Species\tGene\tNumSequences" > "$output_file"
